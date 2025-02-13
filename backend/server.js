@@ -24,18 +24,24 @@ db.connect((err) => {
   console.log("✅ Connected to MySQL Database");
 });
 
+
+const bcrypt = require('bcryptjs');
+
 // ✅ Create Employee API (POST)
-app.post("/api/employee", (req, res) => {
-  const { Emp_FName, Emp_LName, Emp_Email, Emp_Phone, EmpRole_ID, Emp_Status } = req.body;
+app.post("/api/employee", async (req, res) => {
+  const { Emp_FName, Emp_LName, Emp_Email, Emp_Phone, EmpRole_ID, Emp_Status, Emp_Username, Emp_Password } = req.body;
   
-  if (!Emp_FName || !Emp_LName || !Emp_Email || !Emp_Phone || !EmpRole_ID || !Emp_Status) {
+  if (!Emp_FName || !Emp_LName || !Emp_Email || !Emp_Phone || !EmpRole_ID || !Emp_Status || !Emp_Username || !Emp_Password) {
     return res.status(400).json({ error: "All fields are required" });
   }
 
-  const sql = `INSERT INTO employee (Emp_FName, Emp_LName, Emp_Email, Emp_Phone, EmpRole_ID, Emp_Status) 
-               VALUES (?, ?, ?, ?, ?, ?)`;
+  // Hash the password
+  const hashedPassword = await bcrypt.hash(Emp_Password, 10);
 
-  db.query(sql, [Emp_FName, Emp_LName, Emp_Email, Emp_Phone, EmpRole_ID, Emp_Status], (err, result) => {
+  const sql = `INSERT INTO employee (Emp_FName, Emp_LName, Emp_Email, Emp_Phone, EmpRole_ID, Emp_Status, Emp_Username, Emp_Password) 
+               VALUES (?, ?, ?, ?, ?, ?, ?, ?)`;
+
+  db.query(sql, [Emp_FName, Emp_LName, Emp_Email, Emp_Phone, EmpRole_ID, Emp_Status, Emp_Username, hashedPassword], (err, result) => {
     if (err) {
       console.error("❌ Error inserting employee:", err);
       return res.status(500).json({ error: "Failed to register employee" });
@@ -43,6 +49,7 @@ app.post("/api/employee", (req, res) => {
     res.status(201).json({ message: "Employee registered successfully!", employeeId: result.insertId });
   });
 });
+
 
 // ✅ Get All Employees API (GET)
 app.get("/api/employee", (req, res) => {
