@@ -30,7 +30,7 @@
           <input type="text" class="form-control" v-model="user.User_Phone" required>
         </div>
       </div>
-      <!--<div class="row mb-3">
+      <div class="row mb-3">
         <div class="col-6">
           <label for="UserRole_ID" class="form-label">Role</label>
           <input type="number" class="form-control" v-model="user.UserRole_ID" required>
@@ -42,7 +42,7 @@
             <option value="Inactive">Inactive</option>
           </select>
         </div>
-      </div>-->
+      </div>
       <button type="submit" class="btn btn-primary">Register</button>
     </form>
   </div>
@@ -69,7 +69,7 @@ export default {
   methods: {
     async registerUser() {
       try {
-        await axios.post('http://localhost:5000/api/users', this.user); // Updated API endpoint to 'users'
+        await axios.post('http://localhost:5000/api/employee', this.employee); // Updated API endpoint to 'users'
         alert('User registered successfully!');
         this.user = {
           User_FName: '',
