@@ -4,6 +4,14 @@
     <form @submit.prevent="registerEmployee">
       <div class="row mb-3">
         <div class="col-6">
+          <label for="Emp_Username" class="form-label">Username</label>
+          <input type="text" class="form-control" v-model="employee.Emp_Username" required>
+        </div>
+        <div class="col-6">
+          <label for="Emp_Password" class="form-label">Password</label>
+          <input type="password" class="form-control" v-model="employee.Emp_Password" required>
+        </div>
+        <div class="col-6">
           <label for="Emp_FName" class="form-label">First Name</label>
           <input type="text" class="form-control" v-model="employee.Emp_FName" required>
         </div>
