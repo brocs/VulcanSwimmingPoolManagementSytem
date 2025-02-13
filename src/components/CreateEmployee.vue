@@ -3,14 +3,14 @@
     <h2>Register User</h2>
     <form @submit.prevent="registerUser">
       <div class="row mb-3">
-        <div class="col-6">
+        <!--<div class="col-6">
           <label for="User_Username" class="form-label">Username</label>
           <input type="text" class="form-control" v-model="user.User_Username" required>
         </div>
         <div class="col-6">
           <label for="User_Password" class="form-label">Password</label>
           <input type="password" class="form-control" v-model="user.User_Password" required>
-        </div>
+        </div>-->
         <div class="col-6">
           <label for="User_FName" class="form-label">First Name</label>
           <input type="text" class="form-control" v-model="user.User_FName" required>
@@ -30,7 +30,7 @@
           <input type="text" class="form-control" v-model="user.User_Phone" required>
         </div>
       </div>
-      <div class="row mb-3">
+      <!--<div class="row mb-3">
         <div class="col-6">
           <label for="UserRole_ID" class="form-label">Role</label>
           <input type="number" class="form-control" v-model="user.UserRole_ID" required>
@@ -42,7 +42,7 @@
             <option value="Inactive">Inactive</option>
           </select>
         </div>
-      </div>
+      </div>-->
       <button type="submit" class="btn btn-primary">Register</button>
     </form>
   </div>
@@ -61,8 +61,8 @@ export default {
         User_Phone: '',
         UserRole_ID: '',
         User_Status: 'Active',
-        User_Username: '',
-        User_Password: ''
+        //User_Username: '',
+        //User_Password: ''
       }
     };
   },
@@ -78,8 +78,8 @@ export default {
           User_Phone: '',
           UserRole_ID: '',
           User_Status: 'Active',
-          User_Username: '',
-          User_Password: ''
+          //User_Username: '',
+          //User_Password: ''
         };
       } catch (error) {
         console.error('Error registering user:', error);
