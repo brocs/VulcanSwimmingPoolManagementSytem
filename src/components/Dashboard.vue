@@ -54,13 +54,23 @@
           </div>
         </div>
 
+        <!--<div>
+           Other buttons and components 
+          <PoolCapacityModal
+            ref="poolCapacityModal"
+            :poolCapacityModalId="'poolCapacityModal'"
+            @update-capacity="updateCapacity"
+          />
+        </div>-->
         <!-- Modals -->
         <OpeningTaskModal ref="openingModal" />
         <DailyTaskModal ref="dailyModal" />
         <AdhocTaskModal ref="adhocModal" />
         <ClosingTaskModal ref="closingModal" />
         <OtherClosingTaskModal ref="otherclosingModal" />
-        <PoolCapacityModal ref="capModal" />
+        <!--<PoolCapacityModal ref="capModal" />-->
+        <PoolCapacityModal ref="capModal" :poolCapacityModalId="'poolCapacityModal'" :currentCapacity="formData.capacityCount" @update-capacity="updateCapacity" />
+
         <PoolWaterTestModal ref="testModal" />
         <!-- End of Modals -->
         
@@ -123,12 +133,20 @@
             </div>
             <div class="row">
               <div class="col-4">
-                <div class="card text-center bg-danger text-white huge-height">
+                <!--<div class="card text-center bg-danger text-white huge-height">
                   <div class="card-body">
                     <h5 class="card-title progNum desc">160</h5>
                     <p class="card-text progNumdesc">Customer Capacity</p>
                   </div>
+                </div>-->
+                <div class="card text-center huge-height" :style="capacityCardStyle">
+                  <div class="card-body">
+                    <h5 class="card-title progNum desc">{{ formData.capacityCount }}</h5>
+                    <p class="card-text progNumdesc">Customer Capacity</p>
+                  </div>
                 </div>
+
+
               </div>
               <div class="col-4">
                 <div class="card text-center bg-primary text-white huge-height">
@@ -157,6 +175,7 @@
 <script>
 import { onMounted } from 'vue';  // Import onMounted hook
 import { useRouter } from 'vue-router';  // Import useRouter for routing
+
 
 import HeaderComponent from "@/components/HeaderComponent.vue";
 import OpeningTaskModal from '@/components/OpeningTaskModal.vue';
@@ -190,15 +209,35 @@ export default {
       modalTitle: '',
       employeeId: '',
       password: '',
-      users: [],  // Make sure to populate this array with actual user data
-      errorMessage: null
+      users: [],  // Populate with actual user data
+      errorMessage: null,
+      formData: {
+        capacityCount: 0,
+        // Other data fields as defined previously
+      },
     };
   },
   methods: {
-    openModal(modalType) {
+    /*openModal(modalType) {
       this.$refs[`${modalType}Modal`].openModal();
+    },*/
+
+    
+    // This method will be called when the event is emitted from PoolCapacityModal
+    updateCapacity(newCapacity) {
+      console.log("Updated Capacity:", newCapacity);
+      this.formData.capacityCount = newCapacity;
     },
     
+    openModal(modalType) {
+      const modalRef = this.$refs[`${modalType}Modal`];
+      if (modalRef && modalRef.openModal) {
+        modalRef.openModal(); // This should trigger the modal's opening logic
+      } else {
+        console.error(`${modalType}Modal is not accessible via ref.`);
+      }
+    },
+
     handleLogin() {
       this.errorMessage = null;
       if (this.employeeId && this.password) {
@@ -217,6 +256,47 @@ export default {
       }
     }
   },
+
+  // FOR POOL CAPACITY
+  computed: {
+  capacityCardStyle() {
+    const capacity = this.formData.capacityCount;
+    const maxCapacity = 160;
+
+    // Normalize capacity between 0 and 1
+    const normalized = Math.min(Math.max(capacity / maxCapacity, 0), 1);
+
+    // Define RGB values for blue, orange, and red
+    const blue = [0, 122, 255];    // #007AFF (Low capacity)
+    const orange = [255, 165, 0];  // #FFA500 (Mid capacity)
+    const red = [255, 0, 0];       // #FF0000 (Max capacity)
+
+    let startColor, endColor, mix;
+
+    if (normalized <= 0.5) {
+      startColor = blue;
+      endColor = orange;
+      mix = normalized * 2; // Scale between 0-1
+    } else {
+      startColor = orange;
+      endColor = red;
+      mix = (normalized - 0.5) * 2; // Scale between 0-1
+    }
+
+    // Calculate interpolated color
+    const interpolatedColor = startColor.map((start, i) =>
+      Math.round(start + (endColor[i] - start) * mix)
+    );
+
+    return {
+      background: `rgb(${interpolatedColor.join(",")})`,
+      color: "#fff", // Ensure text contrast
+      transition: "background 0.5s ease-in-out"
+    };
+  }
+},
+
+
   setup() {
     const router = useRouter();
 
