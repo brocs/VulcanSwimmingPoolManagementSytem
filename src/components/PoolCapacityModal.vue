@@ -8,10 +8,28 @@
         </div>
         <div class="modal-body">
           <form>
-            <!-- Capacity Count Input -->
-            <div class="mb-3">
-              <label for="capacityCount" class="form-label">Capacity Count</label>
-              <input type="number" class="form-control" v-model="capacityCount" />
+            <!-- Capacity ID & Employee Fields -->
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label for="capacityId" class="form-label">Capacity ID</label>
+                <input type="text" class="form-control" v-model="capacityId" disabled />
+              </div>
+              <div class="col-md-6">
+                <label for="employee" class="form-label">Employee</label>
+                <input type="text" class="form-control" v-model="employee" disabled />
+              </div>
+            </div>
+
+            <!-- Date, Time & Capacity Count Fields -->
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label for="dateTime" class="form-label">Date and Time</label>
+                <input type="text" class="form-control" :value="dateTime" disabled />
+              </div>
+              <div class="col-md-6">
+                <label for="capacityCount" class="form-label">Capacity Count</label>
+                <input type="number" class="form-control" v-model="capacityCount" />
+              </div>
             </div>
           </form>
         </div>
@@ -36,12 +54,19 @@ export default {
     currentCapacity: {  // Receives the current capacity from DashBoard.vue
       type: Number,
       required: true
+    },
+    loggedInEmployee: {  // Receives the logged-in employee name as a prop
+      type: String,
+      required: true
     }
   },
   data() {
     return {
       capacityCount: this.currentCapacity, // Initialize with current value
-      modalInstance: null
+      modalInstance: null,
+      employee: this.loggedInEmployee, // Use the passed prop for the logged-in employee
+      dateTime: new Date().toLocaleString(), // Get the current date and time
+      capacityId: 'CAP001' // Example capacity ID, you can generate or pass dynamically
     };
   },
   watch: {

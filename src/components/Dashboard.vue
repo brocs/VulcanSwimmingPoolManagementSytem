@@ -3,65 +3,51 @@
     <div>
       <HeaderComponent />
       <main>
-        <!-- Page Content -->
-         
+
       </main>
     </div>
 
     <div class="row">
-      <!-- Left Sidebar for Buttons (on larger screens) -->
-      <div class="col-md-3 col-12">
-        <!-- BUTTONS -->
-        <div class="container mt-4">
-          <div class="d-grid gap-3">
-            <button class="btn btn-success btn-lg" id="openingTaskButton" @click="openModal('opening')">Opening Task</button>
+      <!-- Task Sidebar / Card Style Button -->
+      <div class="col-md-3 p-3">
+        <h5 class="mb-3">TASK CARDS</h5>
+        
+        <div class="container mt-2 card-custom-container">
+          <div class="d-grid gap-3 h-100">
+            <button class="btn btn-success btn-lg" id="openingTaskButton" @click="openModal('opening')">Opening</button>
           </div>
         </div>
 
-        <div class="container mt-4">
-          <div class="d-grid gap-3">
-            <button class="btn btn-success btn-lg" id="modalToggle" @click="openModal('daily')">Daily Routine Task</button>
+        <div class="container mt-2 card-custom-container">
+          <div class="d-grid gap-3 h-100">
+            <button class="btn btn-success btn-lg" id="modalToggle" @click="openModal('daily')">Daily</button>
           </div>
         </div>
 
-        <div class="container mt-4">
-          <div class="d-grid gap-3">
-            <button class="btn btn-success btn-lg" id="modalToggle" @click="openModal('adhoc')">Adhoc Reports</button>
+        <div class="container mt-2 card-custom-container">
+          <div class="d-grid gap-3 h-100">
+            <button class="btn btn-success btn-lg" id="modalToggle" @click="openModal('otherclosing')">Closing</button>
           </div>
         </div>
 
-        <div class="container mt-4">
-          <div class="d-grid gap-3">
-            <button class="btn btn-success btn-lg" id="modalToggle" @click="openModal('closing')">Closing Task</button>
+        <div class="container mt-2 card-custom-container">
+          <div class="d-grid gap-3 h-100">
+            <button class="btn btn-success btn-lg" id="modalToggle" @click="openModal('cap')">Weekly Capacity</button>
           </div>
         </div>
 
-        <div class="container mt-4">
-          <div class="d-grid gap-3">
-            <button class="btn btn-success btn-lg" id="modalToggle" @click="openModal('cap')">Capacity</button>
+        <div class="container mt-2 card-custom-container">
+          <div class="d-grid gap-3 h-100">
+            <button class="btn btn-success btn-lg" id="modalToggle" @click="openModal('test')">Water Test</button>
           </div>
         </div>
 
-        <div class="container mt-4">
-          <div class="d-grid gap-3">
-            <button class="btn btn-success btn-lg" id="modalToggle" @click="openModal('test')">Pool Water Test</button>
+        <div class="container mt-2 card-custom-container">
+          <div class="d-grid gap-3 h-100">
+            <button class="btn btn-success btn-lg" id="modalToggle" @click="openModal('adhoc')">Incident Reports</button>
           </div>
         </div>
 
-        <div class="container mt-4">
-          <div class="d-grid gap-3">
-            <button class="btn btn-success btn-lg" id="modalToggle" @click="openModal('otherclosing')">Other Closing Task</button>
-          </div>
-        </div>
-
-        <!--<div>
-           Other buttons and components 
-          <PoolCapacityModal
-            ref="poolCapacityModal"
-            :poolCapacityModalId="'poolCapacityModal'"
-            @update-capacity="updateCapacity"
-          />
-        </div>-->
         <!-- Modals -->
         <OpeningTaskModal ref="openingModal" />
         <DailyTaskModal ref="dailyModal" />
@@ -73,103 +59,197 @@
 
         <PoolWaterTestModal ref="testModal" />
         <!-- End of Modals -->
-        
+
       </div>
+      <!-- End of Task Sidebar / Card Style Button -->
 
-      <!-- Main Content -->
-      <div class="col-md-9 col-12">
-        <div class="row">
-          <!-- Daily Routine Task Card -->
-          <div class="col-lg-3 col-md-4 col-sm-6">
-            <div class="card mb-3">
-              <div class="card-header bg-primary text-white">Daily Routine Task</div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item d-flex justify-content-between">
-                  Pool Water Check <span class="badge bg-warning text-dark">Pending</span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between">
-                  Counter People <span class="badge bg-warning text-dark">Pending</span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between">
-                  Bathroom Check <span class="badge bg-warning text-dark">Pending</span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between">
-                  Sanitary Check <span class="badge bg-warning text-dark">Pending</span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between">
-                  Changing Room Check <span class="badge bg-warning text-dark">Pending</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Task Progress Cards -->
-          <div class="col-md-9">
-            <div class="row u">
-              <div class="col-4">
-                <div class="card text-center mb-3 huge-height">
-                  <div class="card-body">
-                    <h5 class="card-title progNum">80%</h5>
-                    <p class="card-text">Opening Task Done</p>
-                  </div>
+      <!-- Dashboard Section -->
+      <div class="col-md-5 p-3">
+        <div class="col-12">
+          <!-- Dashboard view -->
+          <h5 class="mb-3">DASHBOARD</h5>
+          <div class="card mt-2 card-custom-container">
+            <div class="card-body h-100">
+              <div class="d-flex justify-content-center align-items-center">
+                <div class="d-flex align-items-center" style="width: 20%; justify-content: start;">
+                  <h2 class="text-success progNum desc mb-0">85%</h2>
                 </div>
-              </div>
-              <div class="col-4">
-                <div class="card text-center mb-3 huge-height">
-                  <div class="card-body">
-                    <h5 class="card-title progNum">85%</h5>
-                    <p class="card-text">Throughout The Day Task Done</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-4">
-                <div class="card text-center mb-3 huge-height">
-                  <div class="card-body">
-                    <h5 class="card-title progNum">90%</h5>
-                    <p class="card-text">Closing Task Done</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-4">
-                <!--<div class="card text-center bg-danger text-white huge-height">
-                  <div class="card-body">
-                    <h5 class="card-title progNum desc">160</h5>
-                    <p class="card-text progNumdesc">Customer Capacity</p>
-                  </div>
-                </div>-->
-                <div class="card text-center huge-height" :style="capacityCardStyle">
-                  <div class="card-body">
-                    <h5 class="card-title progNum desc">{{ formData.capacityCount }}</h5>
-                    <p class="card-text progNumdesc">Customer Capacity</p>
-                  </div>
-                </div>
-
-
-              </div>
-              <div class="col-4">
-                <div class="card text-center bg-primary text-white huge-height">
-                  <div class="card-body">
-                    <h5 class="card-title progNum desc">7.2</h5>
-                    <p class="card-text progNumdesc">pH Level</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-4">
-                <div class="card text-center bg-primary text-white huge-height">
-                  <div class="card-body">
-                    <h5 class="card-title progNum desc">4</h5>
-                    <p class="card-text progNumdesc">Chlorine Level</p>
-                  </div>
+                <div class="d-flex align-items-center" style="justify-content: start;">
+                  <p class="mb-0 ms-3">Opening Task Done</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
+        <div class="col-12 mt-2">
+          <div class="card card-custom-container">
+            <div class="card-body h-100">
+              <div class="d-flex justify-content-center align-items-center">
+                <div class="d-flex align-items-center" style="width: 20%; justify-content: start;">
+                  <h2 class="text-success progNum desc mb-0">85%</h2>
+                </div>
+                <div class="d-flex align-items-center" style="justify-content: start;">
+                  <p class="mb-0 ms-3">Throughout The Day Task Done</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 mt-2">
+          <div class="card card-custom-container">
+            <div class="card-body h-100">
+              <div class="d-flex justify-content-center align-items-center">
+                <div class="d-flex align-items-center" style="width: 20%; justify-content: start;">
+                  <h2 class="text-success progNum desc mb-0">85%</h2>
+                </div>
+                <div class="d-flex align-items-center" style="justify-content: start;">
+                  <p class="mb-0 ms-3">Closing Task Done</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 mt-2">
+          <div class="card card-custom-container">
+            <div class="card-body h-100">
+              <div class="d-flex justify-content-center align-items-center">
+                <div class="d-flex align-items-center" style="width: 20%; justify-content: start;">
+                  <h2 class="text-success progNum desc mb-0">85%</h2>
+                </div>
+                <div class="d-flex align-items-center" style="justify-content: start;">
+                  <p class="mb-0 ms-3">Weekly</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End of Dashboard view--> 
+
+
+
+        <!-- pH and Chlorine Levels -->
+        <div class="col-12 mt-2">
+          <div class="card text-center bg-primary text-white customer-con-1">
+            <div class="card-body h-100">
+              <div class="row">
+                <div class="col-6">
+                  <h2 class="card-title progNum desc">7.2</h2>
+                  <p class="card-text progNumdesc">pH Level</p>
+                </div>
+                <div class="col-6">
+                  <h2 class="card-title progNum desc">4</h2>
+                  <p class="card-text progNumdesc">Chlorine Level</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End of pH and Chlorine Levels -->
       </div>
-    </div>
-  </div>
+      <!-- End of Dashboard Section -->
+
+
+      <!-- Notification Sidebar -->
+      <div class="col-md-4 p-3">
+        <h5 class="mb-3">NOTIFICATION</h5>
+        <!-- Daily Routine Task Card -->
+        <div class="card mb-2">
+          <div class="card-header bg-primary text-white">Daily Routine Task</div>
+          <!-- Scrollable List -->
+          <ul class="list-group list-group-flush" style="max-height: 660px; overflow-y: auto; padding-right: 10px;">
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Pool Water Check <span class="badge bg-warning text-dark">Pending</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Counter People <span class="badge bg-warning text-dark">Pending</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Bathroom Check <span class="badge bg-warning text-dark">Pending</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Sanitary Check <span class="badge bg-warning text-dark">Pending</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Changing Room Check <span class="badge bg-warning text-dark">Pending</span>
+            </li>
+            <!-- Repeat Items -->
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Pool Water Check <span class="badge bg-warning text-dark">Pending</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Counter People <span class="badge bg-warning text-dark">Pending</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Bathroom Check <span class="badge bg-warning text-dark">Pending</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Sanitary Check <span class="badge bg-warning text-dark">Pending</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Changing Room Check <span class="badge bg-warning text-dark">Pending</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Changing Room Check <span class="badge bg-warning text-dark">Pending</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Changing Room Check <span class="badge bg-warning text-dark">Pending</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Changing Room Check <span class="badge bg-warning text-dark">Pending</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Changing Room Check <span class="badge bg-warning text-dark">Pending</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Changing Room Check <span class="badge bg-warning text-dark">Pending</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Changing Room Check <span class="badge bg-warning text-dark">Pending</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Changing Room Check <span class="badge bg-warning text-dark">Pending</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Changing Room Check <span class="badge bg-warning text-dark">Pending</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Changing Room Check <span class="badge bg-warning text-dark">Pending</span>
+            </li>
+            <!-- Continue as needed -->
+          </ul>
+        </div>
+
+
+        <!-- Current Occupancy -->
+        <div class="card text-center bg-primary text-white mt-2 customer-con-1" :style="capacityCardStyle" @click="enableEdit">
+          <div class="card-body h-100">
+            <!-- Display Mode: Show capacity when not in edit mode -->
+            <h5 v-if="!editMode" class="card-title progNum desc">{{ formData.capacityCount }}</h5>
+
+            <!-- Input field to enter a new capacity when in edit mode -->
+            <input v-if="editMode" v-model.number="newCapacity" type="number" class="form-control" ref="capacityInput" placeholder="Enter capacity"/>
+            
+            <!-- Buttons to submit or cancel edit, only visible when input has a value -->
+            <div v-if="editMode && newCapacity !== 0" class="mt-2">
+              <button @click.stop="saveCapacity" class="btn btn-primary btn-sm mr-2">Submit</button>
+              <button @click.stop="cancelEdit" class="btn btn-secondary btn-sm">Cancel</button>
+            </div>
+
+            <p class="card-text progNumdesc">Current Occupancy</p>
+          </div>
+        </div>
+        <!-- End Current Occupancy -->
+
+      </div>
+
+  
+
+    </div> <!-- End Of Row -->
+    
+
+
+
+  </div> <!-- End of First Div-->
 </template>
 
 <script>
@@ -181,36 +261,40 @@ import HeaderComponent from "@/components/HeaderComponent.vue";
 import OpeningTaskModal from '@/components/OpeningTaskModal.vue';
 import DailyTaskModal from '@/components/DailyTaskModal.vue';
 import AdhocTaskModal from '@/components/AdhocTaskModal.vue';
-import ClosingTaskModal from '@/components/ClosingTaskModal.vue';
+//import ClosingTaskModal from '@/components/ClosingTaskModal.vue';
 import OtherClosingTaskModal from '@/components/OtherClosingTaskModal.vue';
-import PoolCapacityModal from '@/components/PoolCapacityModal.vue';
+//import PoolCapacityModal from '@/components/PoolCapacityModal.vue';
 import PoolWaterTestModal from '@/components/PoolWaterTestModal.vue';
+
 //import AdminDashboard from '@/components/Admin-Dashboard.vue';
 
 export default {
   components: {
     HeaderComponent,
+
     //AdminDashboard,
+
     OpeningTaskModal,
     DailyTaskModal,
     AdhocTaskModal,
-    ClosingTaskModal,
+    //ClosingTaskModal,
     OtherClosingTaskModal,
-    PoolCapacityModal,
+    //PoolCapacityModal,
     PoolWaterTestModal,
   },
   data() {
     return {
-      currentDate: new Date().toLocaleDateString('en-CA', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
+      currentDate: new Date().toLocaleDateString('en-US', {
+            weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
       }),
       modalTitle: '',
       employeeId: '',
       password: '',
       users: [],  // Populate with actual user data
       errorMessage: null,
+      editMode: false, // Flag to toggle input field
+      newCapacity: null,
+
       formData: {
         capacityCount: 0,
         // Other data fields as defined previously
@@ -218,6 +302,27 @@ export default {
     };
   },
   methods: {
+      
+    enableEdit() {
+      if (!this.editMode) {
+        this.editMode = true;
+        this.newCapacity = this.formData.capacityCount; // Load current value
+        this.$nextTick(() => {
+          this.$refs.capacityInput.focus(); // Auto-focus input
+        });
+      }
+    },
+    saveCapacity() {
+      if (!isNaN(this.newCapacity) && this.newCapacity !== null) {
+        this.formData.capacityCount = parseInt(this.newCapacity); // Ensure integer conversion
+      }
+      this.editMode = false; // Exit edit mode after saving
+    },
+    cancelEdit() {
+      this.editMode = false; // Exit edit mode without saving
+      this.newCapacity = 0;  // Reset the newCapacity
+    },
+    
     /*openModal(modalType) {
       this.$refs[`${modalType}Modal`].openModal();
     },*/
@@ -316,6 +421,7 @@ html, body {
   height: 100%;
 }
 
+
 .container, .row, .col-md-3, .col-md-9 {
   margin: 0;
   padding: 0;
@@ -339,7 +445,12 @@ main {
   height: 100%;
   text-align: center;
 }
-
+.card-custom-container{
+  height: 170px;
+}
+.customer-con-1{
+  height: 350px;
+}
 .progNum {
   font-size: 3vw;  /* Use relative font sizing for responsiveness */
   font-weight: bold;
@@ -351,7 +462,7 @@ main {
   height: 250px;
 }
 
-@media (max-width: 1024px) {
+/*@media (max-width: 1024px) {
   .col-md-3 {
     margin-bottom: 20px;
   }
@@ -372,15 +483,15 @@ main {
   }
 
   .progNum {
-    font-size: 4vw;  /* Slightly larger for smaller devices */
+    font-size: 4vw; 
   }
 
   .huge-height {
-    height: 200px; /* Reduce height for smaller screens */
+    height: 200px; 
   }
 
   .card-body {
     padding: 10px;
   }
-}
+}*/
 </style>

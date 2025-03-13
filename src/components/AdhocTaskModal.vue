@@ -646,6 +646,36 @@ export default {
         rescuerName: '',
         rescuerContact: '',
         rescuerActions: ''
+      },
+      psData: {
+        psId: '',
+        psTime: '',
+        psSpinalInjury: '',
+        psTreatShock: '',
+        psEMS: '',
+        psLOC: '',
+        psBreathing: '',
+        psCirculation: ''
+      },
+      ssData: {
+        ssId: '',
+        ssBreathingRate: '',
+        ssBreathingRhythm: '',
+        ssBreathingDepth: '',
+        ssPulseRate: '',
+        ssPulseRhythm: '',
+        ssPulseDepth: '',
+        victimName: '',
+        ssLOC: '',
+        ssPupilEqual: '',
+        ssPupilReactsLight: '',
+        ssPupilRSize: '',
+        ssSequence: ''
+      },
+      headToeExamData: {
+        htExamId: '',
+        htExamInfo: '',
+        htExamMedAlert: ''
       }
     };
   },
